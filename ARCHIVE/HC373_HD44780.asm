@@ -1,10 +1,9 @@
 
 
 	include include/68230_68681_ADR.inc
-	include m68k_MACROS.asm
+	include include/m68k_MACROS.inc
 	include include/exception_vector_addresses.inc
 	include include/colors_IL9320.inc
-	include include/MC6840init.inc
 
 	section .assemblycode
 
