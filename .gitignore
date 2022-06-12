@@ -1,1 +1,5 @@
 PLD/IC220_INOUT_DECODE.abs
+Makefile
+Build/HC373_HC44780_MAIN_INIT.o.lst
+a.out
+Build/HC373_HD44780.o.lst
