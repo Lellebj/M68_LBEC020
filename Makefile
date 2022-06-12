@@ -1,7 +1,7 @@
-# Make rosco_m68k programs
-# 
-# Copyright (c)2020 Ross Bamford
-# See LICENSE
+
+# My  LICENSE ???
+
+
 SYSINCDIR?=include
 SYSLIBDIR?=libs/build/lib
 BUILDLIBDIR?=build
