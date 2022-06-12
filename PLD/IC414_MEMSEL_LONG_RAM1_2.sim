@@ -1,0 +1,96 @@
+%SIGNAL
+PIN   5 =  A0 
+PIN   6 =  A1 
+PIN   8 =  A20 
+PIN   9 =  A21 
+PIN  10 =  A22 
+PIN  11 =  A23 
+PIN   4 =  AS 
+PIN  13 =  BUSGRANT 
+PIN   3 =  DS 
+PIN  16 =  DSACK1 
+PIN  15 =  FC0 
+PIN  14 =  FC1 
+PIN  19 =  RAM_146_1 
+PIN  18 =  RAM_146_2 
+PIN  17 =  RD 
+PIN   7 =  RW 
+PIN  20 =  SEL_LLD 
+PIN  21 =  SEL_LMD 
+PIN  22 =  SEL_UMD 
+PIN  23 =  SEL_UUD 
+PIN   2 =  SIZ0 
+PIN   1 =  SIZ1 
+%END
+
+%FIELD
+FIELD adrhigh = A23,A22,A21,A20
+%END
+
+%EQUATION
+!DSACK1 =>
+    !A21 & !A22 & A23 & !AS & !FC0
+  # !A21 & !A22 & A23 & !AS & !FC1
+
+!RAM_146_1 =>
+    !A20 & !A21 & !A22 & A23 & !AS & BUSGRANT & !FC0
+  # !A20 & !A21 & !A22 & A23 & !AS & BUSGRANT & !FC1
+
+!RAM_146_2 =>
+    A20 & !A21 & !A22 & A23 & !AS & BUSGRANT & !FC0
+  # A20 & !A21 & !A22 & A23 & !AS & BUSGRANT & !FC1
+
+RD =>
+    !RW
+
+!SEL_LLD =>
+    A0 & A1
+  # A1 & SIZ1
+  # !SIZ0 & !SIZ1
+  # A0 & SIZ0 & SIZ1
+
+!SEL_LMD =>
+    !A0 & A1
+  # A0 & !A1 & !SIZ0
+  # !A1 & SIZ0 & SIZ1
+  # !A1 & !SIZ0 & !SIZ1
+
+!SEL_UMD =>
+    A0 & !A1
+  # !A1 & !SIZ0
+  # !A1 & SIZ1
+
+!SEL_UUD =>
+    !A0 & !A1
+
+DSACK1.oe  =>
+    1 
+
+FC0.oe  =>
+    0 
+
+FC1.oe  =>
+    0 
+
+RAM_146_1.oe  =>
+    1 
+
+RAM_146_2.oe  =>
+    1 
+
+RD.oe  =>
+    1 
+
+SEL_LLD.oe  =>
+    1 
+
+SEL_LMD.oe  =>
+    1 
+
+SEL_UMD.oe  =>
+    1 
+
+SEL_UUD.oe  =>
+    1 
+
+%END

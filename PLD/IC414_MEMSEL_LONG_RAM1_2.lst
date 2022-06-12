@@ -1,0 +1,103 @@
+LISTING FOR LOGIC DESCRIPTION FILE: IC414_MEMSEL_LONG_RAM1_2.pld     Page 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Jun 11 15:52:46 2022
+
+  1:Name     IC414_MEMSEL_LONG_RAM1_2 ;
+  2:PartNo   0123 ;
+  3:Date     2022-04-20 ;
+  4:Revision 01 ;
+  5:Designer Engineer ;
+  6:Company  Lellebj ;
+  7:Assembly None ;
+  8:Location  ;
+  9:Device   g22V10 ;
+ 10:
+ 11:/* *************** INPUT PINS ******************** */
+ 12:PIN 1    =  SIZ1                                ; /*    connected to Bus acknowledge    */ 
+ 13:PIN 2    =  SIZ0                                ; /*                                */ 
+ 14:PIN 3    =  DS                                  ; /*                                                            */ 
+ 15:PIN 4    =  AS                                  ; /*                                                            */ 
+ 16:PIN 5    =  A0                          ; /*                                                            */ 
+ 17:PIN 6    =  A1                                          ; /*                                                            */ 
+ 18:PIN 7    =  RW                                                  ; /*                                                            */ 
+ 19:PIN 8    =  A20                                 ; /*                                                            */ 
+ 20:PIN 9    =  A21                         ; /*                                                            */ 
+ 21:PIN 10    =  A22                                                        ; /*                                                            */ 
+ 22:PIN 11    =  A23                                                        ; /*                                                            */ 
+ 23:       
+ 24:PIN 13    =  BUSGRANT                                                           ; /*    disconnect at DMA                       */ 
+ 25:
+ 26:PIN 14    =   FC1                                   ; /*                                                                */ 
+ 27:PIN 15    =   FC0                                                   ; /*                                                                */ 
+ 28:
+ 29:/* *************** OUTPUT PINS *********************/
+ 30:PIN 16    =   DSACK1                                                    ; /* longword ack.                                                      */ 
+ 31:PIN 17    =   RD                                                                ; /*                                                            */ 
+ 32:PIN 18    =   RAM_146_2                                                 ; /*                                                            */ 
+ 33:PIN 19    =   RAM_146_1                                         ; /*                                                            */ 
+ 34:PIN 20    =   SEL_LLD                                                   ; /*                                                            */ 
+ 35:PIN 21    =   SEL_LMD                                                   ; /*                                                            */ 
+ 36:PIN 22    =   SEL_UMD                                                           ; /*                                                            */ 
+ 37:PIN 23    =   SEL_UUD                                                           ; /*                                                            */ 
+ 38:
+ 39:
+ 40:/*    DO NOT CHANGE. THESE ARE FROM 68020UM. THEY ARE CORRECT !! */
+ 41:
+ 42:!SEL_UUD=   !A0 & !A1;
+ 43:
+ 44:!SEL_UMD=   !SIZ0 & !A1 
+ 45:            # !A1 & A0 
+ 46:            # SIZ1 & !A1 ;
+ 47:
+ 48:!SEL_LMD=   !A0 & A1  
+ 49:            # !A1 & !SIZ1 & !SIZ0 
+ 50:            # SIZ1 & SIZ0 & !A1 
+ 51:            # !SIZ0 & !A1 & A0 ;
+ 52:
+ 53:!SEL_LLD=   A0 & SIZ0 & SIZ1  
+
+LISTING FOR LOGIC DESCRIPTION FILE: IC414_MEMSEL_LONG_RAM1_2.pld     Page 2
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Jun 11 15:52:46 2022
+
+ 54:            # !SIZ0 & !SIZ1 
+ 55:            # A0 & A1 
+ 56:            # A1 & SIZ1 ; 
+ 57:
+ 58:/*    DO NOT CHANGE. THESE ARE FROM 68020UM. THEY ARE CORRECT !! */
+ 59:
+ 60:/* SEL_UD= !A0 ;                */
+ 61:/* SEL_LD= AO # SIZ1 # !SIZ0    */
+ 62:
+ 63:FIELD   adrhigh = [A23..20];
+ 64:
+ 65:RD      =        !RW;                   /*      Read Signal  */
+ 66:
+ 67:!RAM_146_1      =       (!AS & adrhigh:'h'[800000..8FFFFF]) & !(FC0 & FC1) & BUSGRANT ;         /*  RAM 1               80 0000 - 8F FFFF    */
+ 68:!RAM_146_2      =       (!AS & adrhigh:'h'[900000..9FFFFF]) & !(FC0 & FC1) & BUSGRANT;                  /*  RAM 2               90 0000 - 9F FFFF    */
+ 69:
+ 70:!DSACK1     =  (!AS & adrhigh:'h'[800000..9FFFFF]) & !(FC0 & FC1);                          /*  !DSACK1 -> 80 0000 - 9F FFFF, Only for fastram   (activated by pullup) */
+ 71:
+ 72:/*
+ 73:DESCRIPTION 
+ 74:
+ 75:odd word aligned, word or three byte size
+ 76: Byte select signals for writing. On reads, all byte selects are asserted if the respective memory block is addressed.
+ 77:The input signal CPU prevents byte select assertion during CPU space cycles and is derived from NANDing FC1-FC0 or FC2-FC0.
+ 78:The label (addressb) is a designer-selectable combination of address lines used to generate the proper address decode for the
+ 79:system's memory bank. With the address lines given here, the decode block size is 256 Kbytes to 2 Mbytes. A similar address might
+ 80:be included in the equations for UUDA , UMDA, etc. if the designer wishes them to be memory mapped also.
+ 81:*/
+ 82:
+ 83:
+
+
+
+Jedec Fuse Checksum       (92b8)
+Jedec Transmit Checksum   (ca3c)

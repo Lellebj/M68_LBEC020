@@ -1,0 +1,66 @@
+Name     IC220_InOut_DECODE.PLD ;
+PartNo   0220 ;
+Date     2022-06-09 ;
+Revision 01 ;
+Designer Engineer ;
+Company  Lellebj ;
+Assembly None ;
+Location  ;
+Device   g22V10 ;
+
+/* *************** INPUT PINS *********************/
+PIN 1	=	A8								;	/*								*/ 
+PIN 2 	=	A9								;	/*								*/ 
+PIN 3 	=	A13								;	/*								*/ 
+PIN 4 	=	A14								;	/*								*/ 
+PIN 5	=	A15								;	/*								*/  
+PIN 6	=	A16								;	/*								*/ 
+PIN 7 	=	A17								;	/*								*/ 
+PIN 8 	=	A18								;	/*								*/ 
+PIN 9	=	A19								;	/*								*/ 
+PIN 10	=	A20								;	/*								*/ 
+PIN 11	=	A21								;	/*								*/ 
+PIN 13  =	A22								;	/*								*/ 
+PIN 14	=	A23								;	/*								*/ 
+/* *************** OUTPUT PINS *********************/
+
+PIN 15	=	BUSGRANT						;	/*								*/ 
+PIN 16 	=	FC0								;	/*								*/ 
+PIN 17 	=	FC1								;	/*								*/ 
+PIN 18 	=	FC2								;	/*								*/ 
+PIN 19 	=	A19_IACK						;	/*								*/ 
+PIN 20 	=	CS_68882						;	/*								*/ 
+PIN 21 	=	CS_68681B						;	/*								*/ 
+PIN 22	=	CS_68681A						;	/*								*/ 
+PIN 23 	=	CS_68230						;	/*								*/ 
+
+$DEFINE ON 'b'1
+$DEFINE OFF 'b'0
+
+
+/*
+FCO-FC2 -$7 
+CPU Space (A 16-A 19) -$2
+Cp-ID (A13-A15) -$1 (default)
+*/
+
+
+FIELD   Cpid    =   [A15..13];
+FIELD   AdrIACK =   [A19..16];
+FIELD   CPUspc  =   [FC2..0];
+FIELD   Ioaddr  =   [A23..13] ;
+
+
+A19_IACK	=	CPUspc:7 & A19;			/*	Interrupt acknowledge cyc  */
+
+
+
+/*
+DESCRIPTION 
+odd word aligned, word or three byte size
+Byte select signals for writing. On reads, all byte selects are asserted if the respective memory block is addressed.
+The input signal CPU prevents byte select assertion during CPU space cycles and is derived from NANDing FC1-FC0 or FC2-FC0.
+The label (addressb) is a designer-selectable combination of address lines used to generate the proper address decode for the
+system's memory bank. With the address lines given here, the decode block size is 256 Kbytes to 2 Mbytes. A similar address might
+be included in the equations for UUDA , UMDA, etc. if the designer wishes them to be memory mapped also.
+*/

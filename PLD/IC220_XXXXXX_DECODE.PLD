@@ -1,0 +1,80 @@
+Name     IC220_InOUT_decode ;
+PartNo   220 ;
+Date     2022-06-09 ;
+Revision 01 ;
+Designer Engineer ;
+Company  Lellebj ;
+Assembly None ;
+Location  ;
+Device   g22V10 ;
+
+/* *************** INPUT PINS *********************/
+PIN 1	=	A8								;	/*								*/ 
+PIN 2 	=	A9								;	/*								*/ 
+PIN [3..11,13,14] 	=	[A13..A23]					;	/*								*/ 
+
+
+
+/* *************** OUTPUT PINS *********************/
+PIN 15	=	BUSGRANT							;	/*								*/ 
+PIN 16 	=	FC0							;	/*								*/ 
+PIN 17 	=	FC1							;	/*								*/ 
+PIN 18 	=	FC2							;	/*								*/ 
+PIN 19 	=	A19_IACK						;	/*								*/ 
+PIN 20 	=	CS_68882						;	/*								*/ 
+PIN 21 	=	CS_68681B						;	/*								*/ 
+PIN 22		=	CS_68681A						;	/*								*/ 
+PIN 23 	=	CS_68230						;	/*								*/ 
+
+
+
+$DEFINE ON 'b'1
+$DEFINE OFF 'b'0
+
+
+A19_IACK	=	FC0 & FC1 & FC2 & A19;			/*	Interrupt acknowledge cyc  */
+
+
+/*
+FCO-FC2 -$7 
+CPU Space (A 16-A 19) -$2
+Cp-ID (A13-A15) -$1 (default)
+*/
+
+
+
+/*
+
+field	cpid	= [A15..A13];
+field	adrIACK	= [A19..A16];
+field	CPUspc	= [FC2..FC0];
+field	ioaddr  = [A23..A13] ;
+*/
+
+
+CS_68882	=	FC0 & FC1 & FC2 & !A16 & A17 & !A18 & !A19 & A13 & !A14 & !A15;		/* coprocessor CPU cycle, Cp-ID 001  */
+CS_68681A	=	!A23;
+CS_68681B	=	OFF;
+CS_68230	=	OFF;
+
+
+/*  A23..A13  : 010 0010 0010  ioaddr:[222]    */
+
+/** Declarations and Intermediate Variable Definitions  **/
+
+
+/*serport1_eqn      = ioaddr:[2F8..2FF] ;  /*******************************/
+/*serport2_eqn      = ioaddr:[3F8..3FF] ;  /*          I/O Address        */
+/*rtclk_eqn         = ioaddr:[100..11F] ;  /*             Ranges          */
+/*parport_eqn       = ioaddr:[1F4..1F7] ;  /*******************************/
+
+
+/*
+DESCRIPTION 
+odd word aligned, word or three byte size
+Byte select signals for writing. On reads, all byte selects are asserted if the respective memory block is addressed.
+The input signal CPU prevents byte select assertion during CPU space cycles and is derived from NANDing FC1-FC0 or FC2-FC0.
+The label (addressb) is a designer-selectable combination of address lines used to generate the proper address decode for the
+system's memory bank. With the address lines given here, the decode block size is 256 Kbytes to 2 Mbytes. A similar address might
+be included in the equations for UUDA , UMDA, etc. if the designer wishes them to be memory mapped also.
+*/

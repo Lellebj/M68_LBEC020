@@ -1,0 +1,96 @@
+LISTING FOR LOGIC DESCRIPTION FILE: IC230_MEMSEL_BYTEPORT_RAM4008.pldPage 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Jun 11 16:15:11 2022
+
+  1:Name     IC230_MEMSel_BytePort.PLD ;
+  2:PartNo   0123 ;
+  3:Date     2022-04-20 ;
+  4:Revision 01 ;
+  5:Designer Engineer ;
+  6:Company  Lellebj ;
+  7:Assembly None ;
+  8:Location  ;
+  9:Device   g22V10 ;
+ 10:
+ 11:/* *************** INPUT PINS *********************/
+ 12:PIN 1    =  WST_GEN                                                             ; /* Wait state generator       */ 
+ 13:PIN 2    =  FC0                                                         ; /*                                */ 
+ 14:PIN 3    =  FC1                                                         ; /*                                                            */ 
+ 15:PIN 4    =  BUSGRANT                                                    ; /*    Goes LOW on DMA              */ 
+ 16:PIN 5    =  DS                                                          ; /*                                                            */ 
+ 17:PIN 6    =  AS                                                  ; /*                                                            */ 
+ 18:PIN 7    =  RW                                                  ; /*                                                            */ 
+ 19:PIN [8..11,13] = [A19..22,A23]          ; /*                                                            */ 
+ 20:/* *************** OUTPUT PINS *********************/
+ 21:
+ 22:PIN 14    =   OE                            ; 
+ 23:PIN 15    =   NC1                                                         ;   /* Not used   ..... */
+ 24:PIN 16    =   NC2                                                 ;   /* Not used   ..... */
+ 25:PIN 17    =   DSACK0                                    ; /*  DSACK0  000000 - 1FFFFF  with wait state  */ 
+ 26:PIN 18    =   WR                                                ; /*                                                            */ 
+ 27:PIN 19    =   RD                                        ; /*                                                            */ 
+ 28:PIN 20    =   RAM_4008_2                                                        ; /*                                                            */ 
+ 29:PIN 21    =   RAM_4008_1                                                        ; /*                                                            */ 
+ 30:PIN 22    =   ST39_SF040_2                                              ; /*                                                            */ 
+ 31:PIN 23    =   ST39_SF040_1                                                      ; /*                                                            */ 
+ 32:
+ 33:
+ 34:$DEFINE ON 'b'1
+ 35:$DEFINE OFF 'b'0
+ 36:
+ 37:FIELD   adrhigh = [A23..A19];
+ 38:
+ 39:
+ 40:RD      =        !RW;                   /*      Read Signal  */
+ 41:WR  =   RW;
+ 42:RD.oe = BUSGRANT  ;                        /*  Disconnected at DMA  */
+ 43:WR.oe = BUSGRANT  ;                        /*  Disconnected at DMA  */
+ 44:
+ 45:
+ 46:!ST39_SF040_1   = !AS & adrhigh:'h'[000000..07FFFF] ;            /*  ADDR.  0X 00 0000 -  0X 07 FFFF   */
+ 47:!ST39_SF040_2   = !AS & adrhigh:'h'[080000..0FFFFF] ;            /*  ADDR.  0X 08 0000 -  0X 0F FFFF   */
+ 48:!RAM_4008_1    = !AS & adrhigh:'h'[100000..17FFFF] ;            /*  ADDR.  0X 10 0000 -  0X 17 FFFF   */
+ 49:!RAM_4008_2    = !AS & adrhigh:'h'[180000..1FFFFF] ;            /*  ADDR.  0X 18 0000 -  0X 1F FFFF   */
+ 50:
+ 51:ST39_SF040_1.oe  = BUSGRANT;                 /*  Disconnected at DMA  */
+ 52:ST39_SF040_2.oe  = BUSGRANT;                 /*  Disconnected at DMA  */
+ 53:RAM_4008_1.oe  = BUSGRANT;                  /*  Disconnected at DMA  */
+
+LISTING FOR LOGIC DESCRIPTION FILE: IC230_MEMSEL_BYTEPORT_RAM4008.pldPage 2
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Jun 11 16:15:11 2022
+
+ 54:RAM_4008_2.oe  = BUSGRANT;                  /*  Disconnected at DMA  */
+ 55:
+ 56:DSACK0.oe     =   !AS & adrhigh:'h'[000000..1FFFFF]              /*  DSACK0 for the 00 0000 - 1F FFFF area */
+ 57:             #    !AS & adrhigh:'h'[800000..9FFFFF]   ;          /* DSACK0 for the 80 0000 - 9F FFFF area  */
+ 58:
+ 59: 
+ 60:DSACK0     =  WST_GEN & !AS & adrhigh:'h'[000000..1FFFFF];             /* DSACK0 goes low after x waitstates   */
+ 61:   
+ 62:                            /*  DSACK0 SIGNAL FROM 0X00000 - 0X1FFFFF  WITH  watistate */
+ 63:                           /*  !DSACK0 -> 80 0000 - 9F FFFF, with NO watistate */
+ 64:                                            
+ 65:
+ 66:
+ 67:/*
+ 68:DESCRIPTI'b'1 
+ 69:odd word aligned, word or three byte size
+ 70:Byte select signals for writing. On reads, all byte selects are asserted if the respective memory block is addressed.
+ 71:The input signal CPU prevents byte select assertion during CPU space cycles and is derived from NANDing FC1-FC0 or FC2-FC0.
+ 72:The label (addressb) is a designer-selectable combination of address lines used to generate the proper address decode for the
+ 73:system's memory bank. With the address lines given here, the decode block size is 256 Kbytes to 2 Mbytes. A similar address might
+ 74:be included in the equations for UUDA , UMDA, etc. if the designer wishes them to be memory mapped also.
+ 75:*/
+ 76:
+
+
+
+Jedec Fuse Checksum       (4def)
+Jedec Transmit Checksum   (3f82)

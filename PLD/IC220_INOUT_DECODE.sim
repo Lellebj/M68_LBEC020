@@ -1,0 +1,74 @@
+%SIGNAL
+PIN   1 =  A8 
+PIN   2 =  A9 
+PIN   3 =  A13 
+PIN   4 =  A14 
+PIN   5 =  A15 
+PIN   6 =  A16 
+PIN   7 =  A17 
+PIN   8 =  A18 
+PIN   9 =  A19 
+PIN  19 =  A19_IACK 
+PIN  10 =  A20 
+PIN  11 =  A21 
+PIN  13 =  A22 
+PIN  14 =  A23 
+PIN  18 =  AS 
+PIN  15 =  BUSGRANT 
+PIN  23 =  CS_68230 
+PIN  22 =  CS_68681A 
+PIN  21 =  CS_68681B 
+PIN  20 =  CS_68882 
+PIN  16 =  FC0 
+PIN  17 =  FC1 
+%END
+
+%FIELD
+FIELD MPUaddr = A19,A18,A17,A16,A15,A14,A13
+FIELD ioaddr = A23,A22,A21,A20,A19,A18,A17,A16,A15,A14,A13,A9,A8
+%END
+
+%EQUATION
+!A19_IACK =>
+    A19 & FC0 & FC1
+
+!CS_68230 =>
+    A8 & !A9 & !A13 & A14 & !A15 & !A16 & !A17 & A18 & !A19 & !A20 & !A21 & A22 & !A23 & !AS
+
+!CS_68681A =>
+    !A8 & A9 & !A13 & A14 & !A15 & !A16 & !A17 & A18 & !A19 & !A20 & !A21 & A22 & !A23 & !AS
+
+!CS_68681B =>
+    A8 & A9 & !A13 & A14 & !A15 & !A16 & !A17 & A18 & !A19 & !A20 & !A21 & A22 & !A23 & !AS
+
+!CS_68882 =>
+    A13 & !A14 & !A15 & !A16 & A17 & !A18 & !A19 & FC0 & FC1
+
+A19_IACK.oe  =>
+    1 
+
+A23.oe  =>
+    0 
+
+AS.oe  =>
+    0 
+
+CS_68230.oe  =>
+    1 
+
+CS_68681A.oe  =>
+    1 
+
+CS_68681B.oe  =>
+    1 
+
+CS_68882.oe  =>
+    1 
+
+FC0.oe  =>
+    0 
+
+FC1.oe  =>
+    0 
+
+%END

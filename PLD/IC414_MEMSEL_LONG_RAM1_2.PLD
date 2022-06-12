@@ -1,0 +1,83 @@
+Name     IC414_MEMSEL_LONG_RAM1_2 ;
+PartNo   0123 ;
+Date     2022-04-20 ;
+Revision 01 ;
+Designer Engineer ;
+Company  Lellebj ;
+Assembly None ;
+Location  ;
+Device   g22V10 ;
+
+
+/* JED checksum C92B8 */
+/* *************** INPUT PINS ******************** */
+PIN 1    =  SIZ1    				; /*	connected to Bus acknowledge	*/ 
+PIN 2    =  SIZ0    				; /*                                */ 
+PIN 3    =  DS     		    		; /*								*/ 
+PIN 4    =  AS      				; /*								*/ 
+PIN 5    =  A0        			; /*								*/ 
+PIN 6    =  A1       					; /*								*/ 
+PIN 7    =  RW      						; /*								*/ 
+PIN 8    =  A20      			    	; /*								*/ 
+PIN 9    =  A21             		; /*								*/ 
+PIN 10    =  A22      							; /*								*/ 
+PIN 11    =  A23       							; /*								*/ 
+       
+PIN 13    =  BUSGRANT      							; /*	disconnect at DMA			*/ 
+
+PIN 14    =   FC1                                   ; /*								*/ 
+PIN 15    =   FC0   					    	    ; /*								*/ 
+
+/* *************** OUTPUT PINS *********************/
+PIN 16    =   DSACK1     					       	; /* longword ack.							*/ 
+PIN 17    =   RD     		 						; /*								*/ 
+PIN 18    =   RAM_146_2      						; /*								*/ 
+PIN 19    =   RAM_146_1                    			; /*								*/ 
+PIN 20    =   SEL_LLD     					    	; /*								*/ 
+PIN 21    =   SEL_LMD       						; /*								*/ 
+PIN 22    =   SEL_UMD      							; /*								*/ 
+PIN 23    =   SEL_UUD      							; /*								*/ 
+
+
+/*    DO NOT CHANGE. THESE ARE FROM 68020UM. THEY ARE CORRECT !! */
+
+!SEL_UUD=   !A0 & !A1;
+
+!SEL_UMD=   !SIZ0 & !A1 
+            # !A1 & A0 
+            # SIZ1 & !A1 ;
+
+!SEL_LMD=   !A0 & A1  
+            # !A1 & !SIZ1 & !SIZ0 
+            # SIZ1 & SIZ0 & !A1 
+            # !SIZ0 & !A1 & A0 ;
+
+!SEL_LLD=   A0 & SIZ0 & SIZ1  
+            # !SIZ0 & !SIZ1 
+            # A0 & A1 
+            # A1 & SIZ1 ; 
+
+/*    DO NOT CHANGE. THESE ARE FROM 68020UM. THEY ARE CORRECT !! */
+
+/* SEL_UD= !A0 ;                */
+/* SEL_LD= AO # SIZ1 # !SIZ0    */
+
+FIELD   adrhigh = [A23..20];
+
+RD	=	 !RW;			/*	Read Signal  */
+
+!RAM_146_1	=	(!AS & adrhigh:'h'[800000..8FFFFF]) & !(FC0 & FC1) & BUSGRANT ;		/*  RAM 1		80 0000 - 8F FFFF    */
+!RAM_146_2	=	(!AS & adrhigh:'h'[900000..9FFFFF]) & !(FC0 & FC1) & BUSGRANT;			/*  RAM 2		90 0000 - 9F FFFF    */
+
+!DSACK1     =  (!AS & adrhigh:'h'[800000..9FFFFF]) & !(FC0 & FC1);        		    /*  !DSACK1 -> 80 0000 - 9F FFFF, Only for fastram   (activated by pullup) */
+
+/*
+DESCRIPTION 
+
+odd word aligned, word or three byte size
+ Byte select signals for writing. On reads, all byte selects are asserted if the respective memory block is addressed.
+The input signal CPU prevents byte select assertion during CPU space cycles and is derived from NANDing FC1-FC0 or FC2-FC0.
+The label (addressb) is a designer-selectable combination of address lines used to generate the proper address decode for the
+system's memory bank. With the address lines given here, the decode block size is 256 Kbytes to 2 Mbytes. A similar address might
+be included in the equations for UUDA , UMDA, etc. if the designer wishes them to be memory mapped also.
+*/

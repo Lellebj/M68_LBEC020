@@ -1,0 +1,83 @@
+LISTING FOR LOGIC DESCRIPTION FILE: IC220_INOUT_DECODE.pld           Page 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Jun 11 16:15:49 2022
+
+  1:Name     IC220_InOut_DECODE.PLD ;
+  2:PartNo   0220 ;
+  3:Date     2022-06-09 ;
+  4:Revision 01 ;
+  5:Designer Engineer ;
+  6:Company  Lellebj ;
+  7:Assembly None ;
+  8:Location  ;
+  9:Device   g22V10 ;
+ 10:
+ 11:/* *************** INPUT PINS *********************/
+ 12:
+ 13:PIN [1,2,3..11,13,14]   =       [A8,A9,A13..A21,A22,A23]                                                                ;       /*                                                              */ 
+ 14:
+ 15:/* *************** OUTPUT PINS *********************/
+ 16:
+ 17:PIN 15  =       BUSGRANT                                                ;       /*                                                              */ 
+ 18:PIN 16  =       FC0                                                             ;       /*                                                              */ 
+ 19:PIN 17  =       FC1                                                             ;       /*                                                              */ 
+ 20:PIN 18  =       AS                                                              ;       /*                                                              */ 
+ 21:PIN 19  =       A19_IACK                                                ;       /*                                                              */ 
+ 22:PIN 20  =       CS_68882                                                ;       /*                                                              */ 
+ 23:PIN 21  =       CS_68681B                                               ;       /*                                                              */ 
+ 24:PIN 22  =       CS_68681A                                               ;       /*                                                              */ 
+ 25:PIN 23  =       CS_68230                                                ;       /*                                                              */ 
+ 26:
+ 27:$DEFINE ON 'b'1
+ 28:$DEFINE OFF 'b'0
+ 29:
+ 30:
+ 31:
+ 32:FIELD   ioaddr  = [A23..A13,A9,A8];
+ 33:FIELD   MPUaddr = [A19..A13];
+ 34:
+ 35:!A19_IACK    =   A19 & FC0 & FC1              ; /*      Interrupt acknowledge cyc  */
+ 36:
+ 37:!CS_68882       =       FC0 & FC1  & MPUaddr:'h'[22000..23FFF]          ;/* coprocessor CPU cycle, Cp-ID 001  */
+ 38:!CS_68681A      =       !AS & ioaddr:'h'[444200..4442FF];
+ 39:!CS_68681B      =       !AS & ioaddr:'h'[444300..4443FF];
+ 40:!CS_68230       =       !AS & ioaddr:'h'[444100..4441FF];
+ 41:
+ 42:/*
+ 43:0100 0100 0100 0000 xxxx yyyy
+ 44:  [4    4    4    1 00-FF]   => 68230 
+ 45:  [4    4    4    2 00-FF]   => 68681A
+ 46:  [4    4    4    3 00-FF]   => 68681B
+ 47:*/
+ 48:
+ 49:/*  A23..A13  : 0010 001n nnnn     ioaddr:'h'[22000..23FFF]    */
+ 50:/*                16   12    8
+ 51:
+ 52:
+ 53:
+
+LISTING FOR LOGIC DESCRIPTION FILE: IC220_INOUT_DECODE.pld           Page 2
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Jun 11 16:15:49 2022
+
+ 54:/*
+ 55:DESCRIPTI'b'1 
+ 56:odd word aligned, word or three byte size
+ 57:Byte select signals for writing. On reads, all byte selects are asserted if the respective memory block is addressed.
+ 58:The input signal CPU prevents byte select assertion during CPU space cycles and is derived from NANDing FC1-FC0 or FC2-FC0.
+ 59:The label (addressb) is a designer-selectable combination of address lines used to generate the proper address decode for the
+ 60:system's memory bank. With the address lines given here, the decode block size is 256 Kbytes to 2 Mbytes. A similar address might
+ 61:be included in the equations for UUDA , UMDA, etc. if the designer wishes them to be memory mapped also.
+ 62:*/
+ 63:
+
+
+
+Jedec Fuse Checksum       (3659)
+Jedec Transmit Checksum   (0734)

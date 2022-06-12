@@ -1,0 +1,73 @@
+%SIGNAL
+PIN   8 =  A19 
+PIN   9 =  A20 
+PIN  10 =  A21 
+PIN  11 =  A22 
+PIN  13 =  A23 
+PIN   6 =  AS 
+PIN   4 =  BUSGRANT 
+PIN   5 =  DS 
+PIN  17 =  DSACK0 
+PIN   2 =  FC0 
+PIN   3 =  FC1 
+PIN  15 =  NC1 
+PIN  16 =  NC2 
+PIN  14 =  OE 
+PIN  21 =  RAM_4008_1 
+PIN  20 =  RAM_4008_2 
+PIN  19 =  RD 
+PIN   7 =  RW 
+PIN  23 =  ST39_SF040_1 
+PIN  22 =  ST39_SF040_2 
+PIN  18 =  WR 
+PIN   1 =  WST_GEN 
+%END
+
+%FIELD
+FIELD adrhigh = A23,A22,A21,A20,A19
+%END
+
+%EQUATION
+DSACK0 =>
+    !A21 & !A22 & !A23 & !AS & WST_GEN
+
+DSACK0.oe  =>
+    !A21 & !A22 & !AS
+
+!RAM_4008_1 =>
+    !A19 & A20 & !A21 & !A22 & !A23 & !AS
+
+RAM_4008_1.oe  =>
+    BUSGRANT
+
+!RAM_4008_2 =>
+    A19 & A20 & !A21 & !A22 & !A23 & !AS
+
+RAM_4008_2.oe  =>
+    BUSGRANT
+
+RD =>
+    !RW
+
+RD.oe  =>
+    BUSGRANT
+
+!ST39_SF040_1 =>
+    !A19 & !A20 & !A21 & !A22 & !A23 & !AS
+
+ST39_SF040_1.oe  =>
+    BUSGRANT
+
+!ST39_SF040_2 =>
+    A19 & !A20 & !A21 & !A22 & !A23 & !AS
+
+ST39_SF040_2.oe  =>
+    BUSGRANT
+
+WR =>
+    RW
+
+WR.oe  =>
+    BUSGRANT
+
+%END

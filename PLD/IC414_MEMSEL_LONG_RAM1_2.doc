@@ -1,0 +1,138 @@
+
+*******************************************************************************
+                           IC414_MEMSEL_LONG_RAM1_2
+*******************************************************************************
+
+CUPL(WM)        5.0a Serial# 60008009
+Device          g22v10  Library DLIB-h-40-1
+Created         Sat Jun 11 15:52:46 2022
+Name            IC414_MEMSEL_LONG_RAM1_2 
+Partno          0123 
+Revision        01 
+Date            2022-04-20 
+Designer        Engineer 
+Company         Lellebj 
+Assembly        None 
+Location        
+
+===============================================================================
+                            Expanded Product Terms
+===============================================================================
+
+!DSACK1 =>
+    !A21 & !A22 & A23 & !AS & !FC0
+  # !A21 & !A22 & A23 & !AS & !FC1
+
+!RAM_146_1 =>
+    !A20 & !A21 & !A22 & A23 & !AS & BUSGRANT & !FC0
+  # !A20 & !A21 & !A22 & A23 & !AS & BUSGRANT & !FC1
+
+!RAM_146_2 =>
+    A20 & !A21 & !A22 & A23 & !AS & BUSGRANT & !FC0
+  # A20 & !A21 & !A22 & A23 & !AS & BUSGRANT & !FC1
+
+RD =>
+    !RW
+
+!SEL_LLD =>
+    A0 & A1
+  # A1 & SIZ1
+  # !SIZ0 & !SIZ1
+  # A0 & SIZ0 & SIZ1
+
+!SEL_LMD =>
+    !A0 & A1
+  # A0 & !A1 & !SIZ0
+  # !A1 & SIZ0 & SIZ1
+  # !A1 & !SIZ0 & !SIZ1
+
+!SEL_UMD =>
+    A0 & !A1
+  # !A1 & !SIZ0
+  # !A1 & SIZ1
+
+!SEL_UUD =>
+    !A0 & !A1
+
+adrhigh =>
+    A23 , A22 , A21 , A20
+
+DSACK1.oe  =>
+    1 
+
+FC0.oe  =>
+    0 
+
+FC1.oe  =>
+    0 
+
+RAM_146_1.oe  =>
+    1 
+
+RAM_146_2.oe  =>
+    1 
+
+RD.oe  =>
+    1 
+
+SEL_LLD.oe  =>
+    1 
+
+SEL_LMD.oe  =>
+    1 
+
+SEL_UMD.oe  =>
+    1 
+
+SEL_UUD.oe  =>
+    1 
+
+
+===============================================================================
+                                 Symbol Table
+===============================================================================
+
+Pin Variable                                    Pterms   Max     Min    
+Pol   Name              Ext     Pin     Type     Used   Pterms  Level   
+--- --------            ---     ---     ----    ------  ------  -----   
+
+    A0                          5        V        -       -       -     
+    A1                          6        V        -       -       -     
+    A20                         8        V        -       -       -     
+    A21                         9        V        -       -       -     
+    A22                         10       V        -       -       -     
+    A23                         11       V        -       -       -     
+    AS                          4        V        -       -       -     
+    BUSGRANT                    13       V        -       -       -     
+    DS                          3        V        -       -       -     
+    DSACK1                      16       V        2       12      3     
+    FC0                         15       V        -       -       -     
+    FC1                         14       V        -       -       -     
+    RAM_146_1                   19       V        2       16      3     
+    RAM_146_2                   18       V        2       16      3     
+    RD                          17       V        1       14      3     
+    RW                          7        V        -       -       -     
+    SEL_LLD                     20       V        4       14      3     
+    SEL_LMD                     21       V        4       12      3     
+    SEL_UMD                     22       V        3       10      3     
+    SEL_UUD                     23       V        1       8       3     
+    SIZ0                        2        V        -       -       -     
+    SIZ1                        1        V        -       -       -     
+    adrhigh                     0        F        -       -       -     
+    DSACK1              oe      16       D        1       1       0     
+    FC0                 oe      15       D        1       1       0     
+    FC1                 oe      14       D        1       1       0     
+    RAM_146_1           oe      19       D        1       1       0     
+    RAM_146_2           oe      18       D        1       1       0     
+    RD                  oe      17       D        1       1       0     
+    SEL_LLD             oe      20       D        1       1       0     
+    SEL_LMD             oe      21       D        1       1       0     
+    SEL_UMD             oe      22       D        1       1       0     
+    SEL_UUD             oe      23       D        1       1       0     
+
+
+LEGEND    D : default variable         F : field      G : group
+          I : intermediate variable    N : node       M : extended node
+          U : undefined                V : variable   X : extended variable
+          T : function
+
