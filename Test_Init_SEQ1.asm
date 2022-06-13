@@ -46,7 +46,17 @@ ASEMBL_IL9320	equ 0			; activate =1 if display 9320 is used
 		; xref 	setcursor,Main_68230_init,Init_68010_vectors
 
 start::
+		move.l	#$810000,A2
+		lea	 spec_code,A3
+		move.w	#$50,D2
+loop:	
+		move.l	(A3)+,(A2)+
+		dbra	D2,loop
 
+		jmp 	$810000		
+
+
+spec_code:
 		move.l	#$1A2B3C4E,D1
 		move.l	D1,$100200
 		move.l	#$98765432,D2
@@ -64,7 +74,7 @@ boot_msg:
 	dc.b	"##########################################################\r\n"
 	dc.b	"The 68EC020 Board is awake 2022\r\n"
 	dc.b	"      git: @@GIT_VERSION@@\r\n"
-	dc.b	"    build: 2022-06-12_21:51\r\n"
+	dc.b	"    build: 2022-06-12_23:48\r\n"
 	dc.b	"\r\n"
 	dc.b	"I/O library tester.\r\n"
 	dc.b	"\0"

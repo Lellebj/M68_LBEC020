@@ -1,0 +1,496 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+SRC is Test_Init_SEQ1.asm Test_Init_SEQ9.asm
+OBJ is Build/Test_Init_SEQ1.o Build/Test_Init_SEQ9.o
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Jun 13 18:10:37 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = cinnamon2d
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VK_LAYER_PATH = /home/lellebj/vulkan/1.1.126.0/x86_64/etc/vulkan/explicit_layer.d
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+PLATFORMIO_IDE = 2.4.3
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /home/lellebj/.Xauthority
+# environment
+GDMSESSION = cinnamon2d
+# default
+MAKE_VERSION := 4.2.1
+# makefile
+CURDIR := /home/lellebj/ASMprojs/M68_LBEC020
+# makefile
+SHELL = /bin/sh
+# makefile (from 'Makefile', line 48)
+RM = rm -f
+# environment
+GDM_LANG = sv
+# environment
+VSCODE_NLS_CONFIG = {"locale":"sv","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/share/code/code
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon2d:/etc/xdg
+# environment
+GTK_OVERLAY_SCROLLING = 1
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# 'override' directive
+GNUMAKEFLAGS := 
+# makefile (from 'Makefile', line 21)
+SOURCES := Test_Init_SEQ1.asm Test_Init_SEQ9.asm
+# environment
+MAKELEVEL := 0
+# environment
+MANDATORY_PATH = /usr/share/gconf/cinnamon2d.mandatory.path
+# environment
+XDG_DATA_DIRS = /usr/share/cinnamon2d:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'Makefile', line 45)
+AS = vasmm68k_mot
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /home/lellebj
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+NO_PROXY = 127.0.0.1
+# makefile (from 'Makefile', line 44)
+LD = m68k-elf-ld
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/H81M-A-Linux:@/tmp/.ICE-unix/1323,unix/H81M-A-Linux:/tmp/.ICE-unix/1323
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 68)
+MAP = $@.map
+# makefile (from 'Makefile', line 32)
+S_EX = .asm
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from 'Makefile', line 41)
+LDFLAGS = -T LD/LBEC020_loadscript.ld 	-L $(SYSLIBDIR)   -Map=$(MAP)  --oformat=elf32-m68k
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/lellebj
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = cinnamon2d
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/lellebj/ASMprojs/M68_LBEC020
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# default
+.LOADED := 
+# environment
+XDG_SEAT = seat0
+# environment
+SSH_AGENT_PID = 1391
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/lellebj
+# environment
+LD_LIBRARY_PATH = :/home/lellebj/vulkan/1.1.126.0/x86_64/lib:/usr/local/cuda-10.1/lib64:
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# makefile (from 'Makefile', line 60)
+BINARY = $(BUILD_DIR)/$(BINARY_BASENAME).$(_EXT)
+# makefile (from 'Makefile', line 9)
+DEFINES = -DM68K-EC020
+# environment
+VSCODE_CODE_CACHE_PATH = /home/lellebj/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
+# environment
+LOGNAME = lellebj
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XDG_VTNR = 7
+# environment
+KICAD_PATH = /usr/share/kicad
+# environment
+PLATFORMIO_PATH = /home/lellebj/.platformio/python3/bin:/opt/CrossM68K/bin:/home/lellebj/vulkan/1.1.126.0/x86_64/bin:/usr/local/cuda-10.1/bin:/opt/CrossM68K/bin:/home/lellebj/vulkan/1.1.126.0/x86_64/bin:/usr/local/cuda-10.1/bin:/usr/local/sbin:/usr/local/sbin/bin:/usr/local/sbin/m68k-linux:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/lellebj/.dotnet/tools:/opt/altera/20.1/quartus/bin:/opt/altera/20.1/modelsim_ase/linuxaloem:/home/lellebj/z88dk/bin:/home/lellebj/.dotnet/tools:/opt/altera/20.1/quartus/bin:/opt/altera/20.1/modelsim_ase/linuxaloem:/home/lellebj/z88dk/bin:/home/lellebj/z88dk/bin
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+PATH = /opt/CrossM68K/bin:/home/lellebj/vulkan/1.1.126.0/x86_64/bin:/usr/local/cuda-10.1/bin:/opt/CrossM68K/bin:/home/lellebj/vulkan/1.1.126.0/x86_64/bin:/usr/local/cuda-10.1/bin:/usr/local/sbin:/usr/local/sbin/bin:/usr/local/sbin/m68k-linux:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/lellebj/.dotnet/tools:/opt/altera/20.1/quartus/bin:/opt/altera/20.1/modelsim_ase/linuxaloem:/home/lellebj/z88dk/bin:/home/lellebj/.dotnet/tools:/opt/altera/20.1/quartus/bin:/opt/altera/20.1/modelsim_ase/linuxaloem:/home/lellebj/z88dk/bin:/home/lellebj/z88dk/bin
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 43)
+CC = m68k-elf-gcc
+# makefile (from 'Makefile', line 7)
+BUILD_DIR = Build
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-fdb183de-4ccb-4d31-bbe3-8ed4877fb403.sock
+# makefile (from 'Makefile', line 42)
+ASFLAGS = -Felf -m68020 -m68882 -o $@ $(F_LIST) $(DEFINES)
+# environment
+XDG_SESSION_ID = c1
+# environment
+USER = lellebj
+# makefile (from 'Makefile', line 33)
+OBJ_EX = o
+# makefile
+.DEFAULT_GOAL := default
+# environment
+XDG_CURRENT_DESKTOP = X-Cinnamon
+# makefile (from 'Makefile', line 59)
+BINARY_BASENAME = 68CE020
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# makefile (from 'Makefile', line 52)
+_EXT = srec
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = sv
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-9b706770-1.68.0-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# makefile (from 'Makefile', line 5)
+SYSINCDIR = Include
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# environment
+ZCCCFG = /home/lellebj/z88dk/lib/config
+# environment
+QT_ACCESSIBILITY = 1
+# environment
+DESKTOP_AUTOSTART_ID = 10752943d2d811525c165513132634577100000013230010
+# environment
+VK_SDK_PATH = /home/lellebj/vulkan/1.1.126.0/x86_64:/home/lellebj/vulkan/1.1.126.0/x86_64:
+# environment
+DEFAULTS_PATH = /usr/share/gconf/cinnamon2d.default.path
+# 'override' directive
+.SHELLSTATUS := 0
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+PLATFORMIO_CALLER = vscode
+# makefile (from 'Makefile', line 74)
+DATE := 2022-06-13_18:10
+# environment
+LC_ALL = C
+# makefile (from 'Makefile', line 6)
+SYSLIBDIR = Lib
+# makefile (from 'Makefile', line 8)
+LIBS = 
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+KIGITHUB = https://github.com/KiCad
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX := 
+# makefile (from 'Makefile', line 22)
+OBJECTS := Build/Test_Init_SEQ1.o Build/Test_Init_SEQ9.o
+# environment
+VULKAN_SDK = /home/lellebj/vulkan/1.1.126.0/x86_64
+# makefile (from 'Makefile', line 71)
+F_LIST = -L $(LST)
+# environment
+LANG = C
+# makefile (from 'Makefile', line 69)
+LST = $@.lst
+# environment
+VSCODE_PID = 1700
+ 
+# makefile (from 'Makefile', line 50)
+OBJCFLAGS = -I elf32-big -O srec --srec-len 200
+# variable set hash-table stats:
+# Load=132/1024=13%, Rehash=0, Collisions=12/197=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2049, inode 5909444): 17 files, no impossibilities.
+
+# 17 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+Build/Test_Init_SEQ1.o: Test_Init_SEQ1.asm
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  Last modified 2022-06-12 23:48:21.605434428
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# @ := Build/Test_Init_SEQ1.o
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/9=11%
+#  recipe to execute (from 'Makefile', line 84):
+		mkdir -p $(@D)
+		sed -ri "s/[2][0-9]{3}[-][0][0-9][-][0-3][0-9][_][0-9]{2}[:][0-9]{2}/$(DATE)/g" $^
+		$(AS)  $(ASFLAGS)  $<
+		echo
+
+all: mainChunk initChunk
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
+
+.PHONY: all clean dump all clean load
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Test_Init_SEQ9.asm:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-12 22:48:39.60001911
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-12 21:49:18.056014035
+#  File has been updated.
+#  Successfully updated.
+
+dump:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+Build/Test_Init_SEQ9.o: Test_Init_SEQ9.asm
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  Last modified 2022-06-12 22:48:39.608019158
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# @ := Build/Test_Init_SEQ9.o
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/9=11%
+#  recipe to execute (from 'Makefile', line 84):
+		mkdir -p $(@D)
+		sed -ri "s/[2][0-9]{3}[-][0][0-9][-][0-3][0-9][_][0-9]{2}[:][0-9]{2}/$(DATE)/g" $^
+		$(AS)  $(ASFLAGS)  $<
+		echo
+
+default: Build/68CE020.srec
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.SECONDEXPANSION:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+initChunk: Build/68CE020.srec
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 112):
+	objcopy $(OBJCFLAGS)  -j initvectors  $(BINARY) $(BUILD_DIR)/$@.$(_EXT)
+
+mainChunk: Build/68CE020.srec
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := mainChunk
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := Build/68CE020.srec
+# automatic
+# | := 
+# automatic
+# < := Build/68CE020.srec
+# automatic
+# ^ := Build/68CE020.srec
+# automatic
+# ? := Build/68CE020.srec
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/19=11%
+#  recipe to execute (from 'Makefile', line 101):
+	objcopy $(OBJCFLAGS) -j .monitor  $(BINARY) $(BUILD_DIR)/$@.$(_EXT)
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 128):
+	$(RM) $(OBJECTS)  $(BUILD_DIR)/*.* libs/build/*.$(_EXT) *.lst *.o  *.def
+
+Build/68CE020.srec: Build/Test_Init_SEQ1.o Build/Test_Init_SEQ9.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-12 23:48:21.609434444
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 95):
+	$(LD) $(LDFLAGS) $^ -o $@ $(LIBS)
+	chmod a-x $@
+
+load:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+Test_Init_SEQ1.asm:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-12 23:48:21.605434428
+#  File has been updated.
+#  Successfully updated.
+
+# files hash-table stats:
+# Load=17/1024=2%, Rehash=0, Collisions=0/50=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 33 / storage = 347 B / avg = 10 B
+# current buf: size = 8162 B / used = 347 B / count = 33 / avg = 10 B
+
+# strcache performance: lookups = 66 / hit rate = 50%
+# hash-table stats:
+# Load=33/8192=0%, Rehash=0, Collisions=2/66=3%
+# Finished Make data base on Mon Jun 13 18:10:37 2022
+
+ 

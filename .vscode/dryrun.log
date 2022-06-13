@@ -1,0 +1,16 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/lellebj/ASMprojs/M68_LBEC020'
+SRC is Test_Init_SEQ1.asm Test_Init_SEQ9.asm
+OBJ is Build/Test_Init_SEQ1.o Build/Test_Init_SEQ9.o
+mkdir -p Build
+sed -ri "s/[2][0-9]{3}[-][0][0-9][-][0-3][0-9][_][0-9]{2}[:][0-9]{2}/2022-06-13_18:10/g" Test_Init_SEQ1.asm
+vasmm68k_mot  -Felf -m68020 -m68882 -o Build/Test_Init_SEQ1.o -L Build/Test_Init_SEQ1.o.lst -DM68K-EC020  Test_Init_SEQ1.asm
+echo
+mkdir -p Build
+sed -ri "s/[2][0-9]{3}[-][0][0-9][-][0-3][0-9][_][0-9]{2}[:][0-9]{2}/2022-06-13_18:10/g" Test_Init_SEQ9.asm
+vasmm68k_mot  -Felf -m68020 -m68882 -o Build/Test_Init_SEQ9.o -L Build/Test_Init_SEQ9.o.lst -DM68K-EC020  Test_Init_SEQ9.asm
+echo
+m68k-elf-ld -T LD/LBEC020_loadscript.ld 	-L Lib   -Map=Build/68CE020.srec.map  --oformat=elf32-m68k Build/Test_Init_SEQ1.o Build/Test_Init_SEQ9.o -o Build/68CE020.srec 
+chmod a-x Build/68CE020.srec
+make: Leaving directory '/home/lellebj/ASMprojs/M68_LBEC020'
+ 
